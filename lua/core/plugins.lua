@@ -57,6 +57,15 @@ require("packer").startup(function(use)
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
 	})
+	use({
+		"sudormrfbin/cheatsheet.nvim",
+
+		requires = {
+			{ "nvim-telescope/telescope.nvim" },
+			{ "nvim-lua/popup.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+		},
+	})
 
 	-- Git related plugins
 	use("tpope/vim-fugitive")
