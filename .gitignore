@@ -40,8 +40,8 @@ luac.out
 *.hex
 
 # Folders
-plugin/
+plugin
 lua/package.json
 lua/package-lock.json
-lua/node_modules/
+lua/node_modules
 
