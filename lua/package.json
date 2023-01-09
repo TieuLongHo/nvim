@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "commitlint": "^17.3.0",
+    "eslint_d": "^12.2.1"
+  }
+}

@@ -39,3 +39,9 @@ luac.out
 *.x86_64
 *.hex
 
+# Folders
+./plugin/
+./lua/package.json
+./lua/package-lock.json
+./lua/node_modules/
+
