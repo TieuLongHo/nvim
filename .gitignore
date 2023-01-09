@@ -41,7 +41,6 @@ luac.out
 
 # Folders
 plugin
-lua/package.json
 lua/package-lock.json
 lua/node_modules
 
