@@ -16,6 +16,7 @@ vim.opt.guifont = { "ComicCode Nerd Font", ":14" }
 -- Enable mouse mode
 vim.o.mouse = "a"
 
+vim.opt.clipboard = "unnamedplus"
 -- Enable break indent
 vim.o.breakindent = true
 
