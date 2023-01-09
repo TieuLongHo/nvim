@@ -3,6 +3,7 @@ vim.cmd([[
   ]])
 vim.keymap.set("n", "<c-s-Q>", ":qall!<CR>")
 
+vim.keymap.set("n", "<c-s-m>", ":NvimTreeFocus<CR>")
 -- Paste from Clipboard
 vim.keymap.set("i", "<c-s-V>", ":<c-r>+")
 

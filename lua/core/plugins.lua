@@ -86,9 +86,9 @@ require("packer").startup(function(use)
 			})
 		end,
 	})
-
+	use("mg979/vim-visual-multi")
 	use("jose-elias-alvarez/null-ls.nvim") -- Formatter
-	use("ipod825/vim-tagjump") -- tagjump
+	-- use("ipod825/vim-tagjump") -- tagjump
 	-- Fuzzy Finder (files, lsp, etc)
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
 	-- Find and Replace

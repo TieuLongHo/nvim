@@ -19,8 +19,8 @@ vim.keymap.set("n", "<leader>hl", ":nohlsearch<CR>")
 vim.keymap.set("n", "<Leader>rn", ":set relativenumber!<CR>")
 
 -- Nvim-Tree keymaps
-vim.keymap.set("n", "<c-n>", ":NvimTreeFindFileToggle<CR>")
-vim.keymap.set("n", "<c-m>", ":NvimTreeFocus<CR>")
+vim.keymap.set("n", "<c-M>", ":NvimTreeFocus<CR>")
+vim.keymap.set("n", "<c-m>", ":NvimTreeFindFileToggle<CR>")
 vim.keymap.set("n", "<c-j>", "<c-w><c-j>")
 vim.keymap.set("n", "<c-k>", "<c-w><c-k>")
 -- Tabs
@@ -32,11 +32,11 @@ vim.keymap.set("n", "<c-x>", ":tabc<CR>")
 vim.keymap.set("n", "<leader>t", ":tabnew<CR>")
 
 vim.keymap.set("n", "<c-s>", ":w<CR>")
-vim.keymap.set("n", "<c-q>", ":q!<CR>")
 vim.keymap.set("n", "<c-Q>", ":qall!<CR>")
+vim.keymap.set("n", "<c-q>", ":q!<CR>")
 
 -- Paste from Clipboard
-vim.keymap.set("i", "<c-V>", ":<c-r>+")
+vim.keymap.set("i", "<c-V>", "<c-r>+")
 -- vim.keymap.set("n", "<c-V>", '"+p')
 
 -- ToggleTerm keymaps
