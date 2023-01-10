@@ -53,6 +53,7 @@ require("packer").startup(function(use)
 	})
 	use("windwp/nvim-ts-autotag")
 
+	use("smjonas/inc-rename.nvim") -- Rename Refactor
 	use({ -- Additional text objects via treesitter
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		after = "nvim-treesitter",
@@ -95,7 +96,16 @@ require("packer").startup(function(use)
 			})
 		end,
 	})
-	use("mg979/vim-visual-multi")
+	-- GUI beautifyer
+	use("MunifTanjim/nui.nvim")
+	use("rcarriga/nvim-notify")
+	use({ "folke/noice.nvim", requires = {
+		"MunifTanjim/nui.nvim",
+		"rcarriga/nvim-notify",
+	} })
+	--
+
+	use("mg979/vim-visual-multi") -- multi caret
 	use("jose-elias-alvarez/null-ls.nvim") -- Formatter
 	-- use("ipod825/vim-tagjump") -- tagjump
 	-- Fuzzy Finder (files, lsp, etc)

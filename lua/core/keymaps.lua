@@ -47,3 +47,7 @@ vim.keymap.set("i", "<c-V>", "<c-r>+")
 vim.keymap.set("n", "<c-\\>v", ":ToggleTerm size=70 direction=vertical<CR>")
 vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
 vim.keymap.set("t", "<esc>", [[<C-\><C-n>][<C-w>k]], { noremap = true })
+
+vim.keymap.set("n", "<leader>rn", function()
+	return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true })
