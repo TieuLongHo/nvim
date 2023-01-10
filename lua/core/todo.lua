@@ -1,4 +1,4 @@
 -- TODO: add seach etc.
 -- FIX: https://github.com/mg979/vim-visual-multi
 -- TODO: https://github.com/stevearc/dressing.nvim for refactor
--- TODO: https://github.com/mrjones2014/legendary.nvim
+-- TODO: configure legend.lua

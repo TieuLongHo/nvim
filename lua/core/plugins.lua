@@ -100,9 +100,6 @@ require("packer").startup(function(use)
 	-- use("ipod825/vim-tagjump") -- tagjump
 	-- Fuzzy Finder (files, lsp, etc)
 	use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
-	-- Find and Replace
-	use("nvim-lua/plenary.nvim")
-	use("windwp/nvim-spectre")
 	-- TODOs
 	use({
 		"folke/todo-comments.nvim",
