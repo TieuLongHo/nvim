@@ -26,9 +26,9 @@ local sources = {
 	diagnostics.commitlint,
 	-- Bash and Zsh
 	formatting.beautysh,
-	-- code_actions.shellcheck,
+	code_actions.shellcheck,
 	-- general typos
-	-- code_actions.cspell,
+	code_actions.cspell,
 	-- diagnostics.cspell,
 }
 
