@@ -11,8 +11,10 @@ local formatting = null_ls.builtins.formatting
 -- register any number of sources simultaneously
 local sources = {
 	-- Python
-	formatting.autopep8,
-	diagnostics.flake8,
+	formatting.blue,
+	formatting.autoflake,
+	formatting.isort,
+	diagnostics.flake8.with({ extra_args = { "--max-line-length=100", "--ignore=E5" } }),
 	-- Lua
 	formatting.stylua,
 	-- C, C++, C++/CLI

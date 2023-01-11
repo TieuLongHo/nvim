@@ -50,3 +50,6 @@ vim.keymap.set("t", "<esc>", [[<C-\><C-n>][<C-w>k]], { noremap = true })
 vim.keymap.set("n", "<leader>rn", function()
 	return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })
+
+-- Tag menu keymap
+vim.keymap.set("n", "<F8>", ":TagbarToggle<CR>")
