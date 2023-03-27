@@ -20,7 +20,6 @@ vim.opt.clipboard = "unnamedplus"
 -- Enable break indent
 vim.o.breakindent = true
 
--- Save undo history
 vim.o.undofile = true
 
 -- Case insensitive searching UNLESS /C or capital in search
