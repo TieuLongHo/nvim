@@ -15,8 +15,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  -- Package manager
-  "wbthomason/packer.nvim",
 
   {
     -- LSP Configuration & Plugins
@@ -134,8 +132,8 @@ local plugins = {
     config = function()
       require("core.plugin_config.tabout")
     end,
-    wants = { "nvim-treesitter" }, -- or require if not used so far
-    after = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
+    dependencies = { "nvim-treesitter" }, -- or require if not used so far
+    dependencies = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
   },
   "preservim/tagbar",
   {
@@ -147,7 +145,7 @@ local plugins = {
   "navarasu/onedark.nvim", -- Theme inspired by Atom
   {
     "rose-pine/neovim",
-    as = "rose-pine",
+    name = "rose-pine",
   },
   "folke/tokyonight.nvim",
   { "wuelnerdotexe/vim-enfocado" },
@@ -157,7 +155,6 @@ local plugins = {
     dependencies = { "rktjmp/lush.nvim" },
   },
   "akinsho/toggleterm.nvim", -- Adds Terminal in seperate tab, split etc.
-  -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   "ThePrimeagen/vim-be-good",
 }
 
@@ -165,27 +162,10 @@ local plugins = {
 -- make sense to execute the rest of the init.lua.
 --
 -- You'll need to restart nvim, and then it will work.
-if is_bootstrap then
-  print("==================================")
-  print("    Plugins are being installed")
-  print("    Wait until Packer completes,")
-  print("       then restart nvim")
-  print("==================================")
-  return
-end
-
--- Automatically source and re-compile packer whenever you save this init.lua
-local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePost", {
-  command = "source <afile> | PackerCompile",
-  group = packer_group,
-  pattern = vim.fn.expand("$MYVIMRC"),
-})
-
 -- LSP settings.
 --  This function gets build when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
+  -- NOTE: Remember that lua is a real programming language, and name such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
   --
