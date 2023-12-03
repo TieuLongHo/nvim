@@ -28,17 +28,19 @@ local plugins = {
       "j-hui/fidget.nvim",
 
       -- Additional lua configuration, makes nvim stuff amazing
-      "folke/neodev.nvim",
+      { "folke/neodev.nvim", opts = {} },
     },
   },
-  ("goolord/alpha-nvim"),
+  "goolord/alpha-nvim",
+
+  "github/copilot.vim",
   -- navigation
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- lazyional, for file icons
     },
-    tag = "nightly", -- lazyional, updated every week. (see issue #1193)
+    tag = "nightly",              -- lazyional, updated every week. (see issue #1193)
   },
   {
     -- Autocompletion
@@ -46,7 +48,6 @@ local plugins = {
     dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   },
 
-  "github/copilot.vim",
   "windwp/nvim-autopairs", -- auto pair
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
@@ -79,11 +80,11 @@ local plugins = {
   "tpope/vim-rhubarb",
   "lewis6991/gitsigns.nvim",
   "nvim-lualine/lualine.nvim", -- Fancier statusline
-  "lukas-reineke/indent-blankline.nvim", -- Add indentation guides even on blank lines
-  "numToStr/Comment.nvim", -- "gc" to comment visual regions/lines
-  "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",     opts = {} },
+  "numToStr/Comment.nvim",    -- "gc" to comment visual regions/lines
+  "tpope/vim-sleuth",         -- Detect tabstop and shiftwidth automatically
   {
-    "folke/twilight.nvim", -- for concentrated coding
+    "folke/twilight.nvim",    -- for concentrated coding
     config = function()
       require("twilight").setup({
         -- your configuration comes here
@@ -114,18 +115,18 @@ local plugins = {
   },
   --
 
-  "mg979/vim-visual-multi", -- multi caret
+  "mg979/vim-visual-multi",         -- multi caret
   "jose-elias-alvarez/null-ls.nvim", -- Formatter
   -- "ipod825/vim-tagjump", -- tagjump
   -- Fuzzy Finder (files, lsp, etc)
-  { "nvim-telescope/telescope.nvim",            branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+  { "nvim-telescope/telescope.nvim",       branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
   -- TODOs
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
   },
   -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make",   cond = vim.fn.executable("make") == 1 },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
   -- Tab out of parantheses
   {
     "abecodes/tabout.nvim",
@@ -133,7 +134,7 @@ local plugins = {
       require("core.plugin_config.tabout")
     end,
     dependencies = { "nvim-treesitter" }, -- or require if not used so far
-    dependencies = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
+    dependencies = { "nvim-cmp" },      -- if a completion plugin is using tabs load it before
   },
   "preservim/tagbar",
   {
@@ -213,22 +214,19 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
-  -- sumneko_lua = {
-  --   Lua = {
-  --     workspace = { checkThirdParty = false },
-  --     telemetry = { enable = false },
-  --     diagnostics = {
-  --       globals = { "vim" },
-  --     },
-  --   },
-  -- },
+-- 	clangd = {},
+-- 	rust_analyzer = {},
+-- 	sumneko_lua = {
+-- 		Lua = {
+-- 			diagnostics = {
+-- 				globals = { "vim" },
+-- 			},
+-- 		},
+-- 	},
 }
+config = function(plugin)
+  vim.opt.rtp:append(plugin.dir .. "/custom-rtp")
+end
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
