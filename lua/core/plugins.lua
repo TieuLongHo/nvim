@@ -33,7 +33,6 @@ local plugins = {
   },
   "goolord/alpha-nvim",
 
-  "github/copilot.vim",
   -- navigation
   {
     "nvim-tree/nvim-tree.lua",
@@ -47,6 +46,7 @@ local plugins = {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   },
+  
 
   "windwp/nvim-autopairs", -- auto pair
   "hrsh7th/cmp-buffer",
@@ -60,6 +60,25 @@ local plugins = {
     build = function()
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {enabled = false},
+        panel = {enabled = false},
+      })
+    end,
+  },
+
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function ()
+      require("copilot_cmp").setup()
+    end
   },
   "windwp/nvim-ts-autotag",
 
@@ -108,6 +127,9 @@ local plugins = {
   "rcarriga/nvim-notify",
   {
     "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+    },
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",
@@ -142,6 +164,7 @@ local plugins = {
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
   },
   -- THEMES
+  "xiyaowong/transparent.nvim",
   "Mofiqul/dracula.nvim",
   "navarasu/onedark.nvim", -- Theme inspired by Atom
   {

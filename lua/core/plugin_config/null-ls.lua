@@ -12,7 +12,7 @@ local formatting = null_ls.builtins.formatting
 local sources = {
 	-- Python
 	formatting.ruff,
-	diagnostics.ruff,	-- Lua
+	diagnostics.flake8,	-- Lua
 	-- C, C++, C++/CLI
 	formatting.astyle,
 	diagnostics.cppcheck,
