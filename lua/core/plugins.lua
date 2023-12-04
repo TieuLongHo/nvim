@@ -32,7 +32,7 @@ local plugins = {
     },
   },
   "goolord/alpha-nvim",
-
+  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}, -- tabbar
   -- navigation
   {
     "nvim-tree/nvim-tree.lua",
@@ -42,11 +42,43 @@ local plugins = {
     tag = "nightly",              -- lazyional, updated every week. (see issue #1193)
   },
   {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = {
+      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+    },
+  },
+  {
     -- Autocompletion
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-nvim-lsp", "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
   },
-  
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  }, 
+  {
+  'stevearc/oil.nvim',
+  opts = {},
+  -- Optional dependencies
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+},
 
   "windwp/nvim-autopairs", -- auto pair
   "hrsh7th/cmp-buffer",
@@ -85,14 +117,7 @@ local plugins = {
   "smjonas/inc-rename.nvim", -- Rename Refactor
   -- Additional text objects via treesitter
   "nvim-treesitter/nvim-treesitter-textobjects",
-  {
-    "sudormrfbin/cheatsheet.nvim",
-    dependencies = {
-      { "nvim-telescope/telescope.nvim" },
-      { "nvim-lua/popup.nvim" },
-      { "nvim-lua/plenary.nvim" },
-    },
-  },
+
 
   -- Git related plugins
   "tpope/vim-fugitive",
