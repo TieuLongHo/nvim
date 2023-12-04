@@ -17,20 +17,19 @@ vim.opt.expandtab = true
 
 local wk = require("which-key")
 
-vim.keymap.set("n", "<leader>hl", ":nohlsearch<CR>") 
--- Cheatsheet
-vim.keymap.set("n", "<Leader>h", ":Cheatsheet<CR>", { silent = true }) -- open cheatsheet
+-- vim.keymap.set("n", "<leader>hl", ":nohlsearch<CR>", {desc = "Clear highlights"})
 
 -- Nvim-Tree keymaps
 vim.keymap.set("n", "M", ":NvimTreeFocus<CR>", { silent = true }) -- focus on vimtree
 vim.keymap.set("n", "<c-m>", ":NvimTreeFindFileToggle<CR>", { silent = true }) -- open vimtree
+
 -- Tabs
 -- vim.keymap.set("n", "<c-h>", ":tabr<CR>") -- right tab
 -- vim.keymap.set("n", "<c-l>", ":tabl<CR>") -- left tab
-vim.keymap.set("n", "<c-h>", ":tabp<CR>", { silent = true }) -- previous tab
-vim.keymap.set("n", "<c-l>", ":tabn<CR>", { silent = true }) -- next tab
-vim.keymap.set("n", "<c-x>", ":tabc<CR>", { silent = true }) -- close tab
-vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true }) -- new tab
+-- vim.keymap.set("n", "<c-h>", ":tabp<CR>", { silent = true }) -- previous tab
+-- vim.keymap.set("n", "<c-l>", ":tabn<CR>", { silent = true }) -- next tab
+-- vim.keymap.set("n", "<c-x>", ":tabc<CR>", { silent = true }) -- close tab
+-- vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true }) -- new tab
 
 vim.keymap.set("n", "<c-s>", ":w<CR>", { silent = true }) -- save
 vim.keymap.set("n", "Q", ":qall!<CR>", { silent = true }) -- quit all
@@ -59,12 +58,12 @@ vim.g.copilot_assume_mapped = true
 
 
 -- move lines up and down
-vim.api.nvim_set_keymap('n', '<C-j>', ':m .+1<CR>==', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-k>', ':m .-2<CR>==', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-j>', ':m .+1<CR>==', { noremap = true, silent = true, desc = "Move Line Down"})
+vim.api.nvim_set_keymap('n', '<C-k>', ':m .-2<CR>==', { noremap = true, silent = true, desc = "Move Line Up"})
 
 -- move lines up and down in visual mode
-vim.api.nvim_set_keymap('x', '<C-j>', ':m \'>+1<CR>gv=gv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('x', '<C-k>', ':m \'<-2<CR>gv=gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('x', '<C-j>', ':m \'>+1<CR>gv=gv', { noremap = true, silent = true, desc = "Move Line Down"})
+vim.api.nvim_set_keymap('x', '<C-k>', ':m \'<-2<CR>gv=gv', { noremap = true, silent = true, desc = "Move Line Up"})
 
 vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }) -- open oil fileexplorer
 
@@ -121,4 +120,10 @@ wk.register({
 		}))
 	end, "Fuzzily search in current buffer" },
 
+	h = {
+		name = "Clear Highlights",
+		l = { ":nohlsearch<CR>", "Clear highlights" }, -- clear highlights
+	},
+
 },{prefix = "<leader>"})
+

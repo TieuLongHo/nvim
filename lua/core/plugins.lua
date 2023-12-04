@@ -30,16 +30,23 @@ local plugins = {
       -- Additional lua configuration, makes nvim stuff amazing
       { "folke/neodev.nvim", opts = {} },
     },
+
   },
-  "goolord/alpha-nvim",
-  {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'}, -- tabbar
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.startify'.config)
+    end
+  },
+  { 'akinsho/bufferline.nvim',             version = "*", dependencies = 'nvim-tree/nvim-web-devicons' }, -- tabbar
   -- navigation
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = {
       "nvim-tree/nvim-web-devicons", -- lazyional, for file icons
     },
-    tag = "nightly",              -- lazyional, updated every week. (see issue #1193)
+    tag = "nightly",                 -- lazyional, updated every week. (see issue #1193)
   },
   {
     "folke/flash.nvim",
@@ -48,11 +55,11 @@ local plugins = {
     opts = {},
     -- stylua: ignore
     keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
     },
   },
   {
@@ -72,13 +79,13 @@ local plugins = {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
-  }, 
+  },
   {
-  'stevearc/oil.nvim',
-  opts = {},
-  -- Optional dependencies
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-},
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
 
   "windwp/nvim-autopairs", -- auto pair
   "hrsh7th/cmp-buffer",
@@ -100,15 +107,15 @@ local plugins = {
     event = "InsertEnter",
     config = function()
       require("copilot").setup({
-        suggestion = {enabled = false},
-        panel = {enabled = false},
+        suggestion = { enabled = false },
+        panel = { enabled = false },
       })
     end,
   },
 
   {
     "zbirenbaum/copilot-cmp",
-    config = function ()
+    config = function()
       require("copilot_cmp").setup()
     end
   },
@@ -123,28 +130,23 @@ local plugins = {
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "lewis6991/gitsigns.nvim",
-  "nvim-lualine/lualine.nvim", -- Fancier statusline
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",     opts = {} },
-  "numToStr/Comment.nvim",    -- "gc" to comment visual regions/lines
-  "tpope/vim-sleuth",         -- Detect tabstop and shiftwidth automatically
   {
-    "folke/twilight.nvim",    -- for concentrated coding
+    "nvim-lualine/lualine.nvim", -- Fancier statusline
+    dependencies = { "kyazdani42/nvim-web-devicons", opt = true }
+  },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",  opts = {} },
+  "numToStr/Comment.nvim", -- "gc" to comment visual regions/lines
+  "tpope/vim-sleuth",      -- Detect tabstop and shiftwidth automatically
+  {
+    "folke/twilight.nvim", -- for concentrated coding
     config = function()
-      require("twilight").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("twilight").setup({})
     end,
   },
   {
     "folke/zen-mode.nvim",
     config = function()
-      require("zen-mode").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("zen-mode").setup({})
     end,
   },
   -- GUI beautifyer
@@ -160,29 +162,28 @@ local plugins = {
       "rcarriga/nvim-notify",
     },
   },
-  --
 
-  "mg979/vim-visual-multi",         -- multi caret
+  "mg979/vim-visual-multi",          -- multi caret
   "jose-elias-alvarez/null-ls.nvim", -- Formatter
   -- "ipod825/vim-tagjump", -- tagjump
   -- Fuzzy Finder (files, lsp, etc)
-  { "nvim-telescope/telescope.nvim",       branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+  { "nvim-telescope/telescope.nvim",            branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
   -- TODOs
   {
     "folke/todo-comments.nvim",
     dependencies = "nvim-lua/plenary.nvim",
   },
   -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make",   cond = vim.fn.executable("make") == 1 },
   -- Tab out of parantheses
- {
-   "abecodes/tabout.nvim",
-   config = function()
-     require("core.plugin_config.tabout")
-   end,
-   dependencies = { "nvim-treesitter" }, -- or require if not used so far
-   dependencies = { "nvim-cmp" },      -- if a completion plugin is using tabs load it before
- },
+  {
+    "abecodes/tabout.nvim",
+    config = function()
+      require("core.plugin_config.tabout")
+    end,
+    dependencies = { "nvim-treesitter" }, -- or require if not used so far
+    dependencies = { "nvim-cmp" },       -- if a completion plugin is using tabs load it before
+  },
   "preservim/tagbar",
   {
     "kylechui/nvim-surround",
@@ -262,15 +263,8 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
--- 	clangd = {},
--- 	rust_analyzer = {},
--- 	sumneko_lua = {
--- 		Lua = {
--- 			diagnostics = {
--- 				globals = { "vim" },
--- 			},
--- 		},
--- 	},
+  clangd = {},
+  rust_analyzer = {},
 }
 config = function(plugin)
   vim.opt.rtp:append(plugin.dir .. "/custom-rtp")

@@ -15,7 +15,7 @@ local sources = {
 	diagnostics.flake8,	-- Lua
 	-- C, C++, C++/CLI
 	formatting.astyle,
-	diagnostics.cppcheck,
+	diagnostics.cpplint,
 	-- JS etc.
 	formatting.prettier,
 	diagnostics.eslint_d,
