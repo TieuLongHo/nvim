@@ -72,14 +72,14 @@ vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" }) -- 
 wk.register({
 	-- flash search
 	l = {
-		name = "flash",
+		name = "Flash",
 		s = { function() require("flash").jump() end, "Flash Jump" },
 		t = { function() require("flash").treesitter() end, "Flash Flashtreesitter" },
 		r = { function() require("flash").treesitter_search() end, "Flash Treesitter Search" },
 	},
 	-- bufferline
 	b = {
-		name = "bufferline",
+		name = "Bufferline",
 		l = { function() require("bufferline").cycle(1) end, "Next Buffer" },
 		h = { function() require("bufferline").cycle(-1) end, "Previous Buffer" },
 		b = { function() require("bufferline").pick_buffer() end, "Pick Buffer" },
@@ -101,5 +101,24 @@ wk.register({
 	},
 	-- lazygit
 	g = { function() require("toggleterm.terminal").Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" }):toggle() end, "Lazygit" },
-},{prefix = "<leader>"})
 
+	-- Search
+	s = {
+		name = "Search",
+		f = { require("telescope.builtin").find_files, "Find Files" },
+		h = { require("telescope.builtin").help_tags, "Search Help" },
+		w = { require("telescope.builtin").grep_string, "Search Current Word" },
+		g = { require("telescope.builtin").live_grep, "Search by Grep" },
+		d = { require("telescope.builtin").diagnostics, "Search Diagnostics" },
+
+	},
+
+	["<space>"] = { require("telescope.builtin").buffers, "Find existing buffers" }, -- find buffers
+	["/"] = { function() -- find in current buffer
+		require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+			winblend = 10,
+			previewer = false,
+		}))
+	end, "Fuzzily search in current buffer" },
+
+},{prefix = "<leader>"})

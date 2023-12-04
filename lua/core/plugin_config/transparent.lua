@@ -6,3 +6,5 @@ require('transparent').clear_prefix('noice')
 require('transparent').clear_prefix('mason')
 
 require('transparent').clear_prefix('bufferline')
+
+require('transparent').clear_prefix('telescope')
