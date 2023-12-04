@@ -150,14 +150,14 @@ local plugins = {
   -- Fuzzy Finder Algorithm which dependencies local dependencies to be built. Only load if `make` is available
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = vim.fn.executable("make") == 1 },
   -- Tab out of parantheses
-  {
-    "abecodes/tabout.nvim",
-    config = function()
-      require("core.plugin_config.tabout")
-    end,
-    dependencies = { "nvim-treesitter" }, -- or require if not used so far
-    dependencies = { "nvim-cmp" },      -- if a completion plugin is using tabs load it before
-  },
+ {
+   "abecodes/tabout.nvim",
+   config = function()
+     require("core.plugin_config.tabout")
+   end,
+   dependencies = { "nvim-treesitter" }, -- or require if not used so far
+   dependencies = { "nvim-cmp" },      -- if a completion plugin is using tabs load it before
+ },
   "preservim/tagbar",
   {
     "kylechui/nvim-surround",
@@ -215,7 +215,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-  nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+  -- nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
   -- Lesser used LSP functionality
   nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
