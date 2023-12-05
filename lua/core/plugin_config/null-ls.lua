@@ -5,6 +5,9 @@ local code_actions = null_ls.builtins.code_actions
 -- diagnostic sources
 local diagnostics = null_ls.builtins.diagnostics
 
+-- completion sources
+local completion = null_ls.builtins.completion
+
 -- formatting sources
 local formatting = null_ls.builtins.formatting
 
@@ -12,7 +15,7 @@ local formatting = null_ls.builtins.formatting
 local sources = {
 	-- Python
 	formatting.ruff,
-	diagnostics.flake8,	-- Lua
+	diagnostics.flake8, -- Lua
 	-- C, C++, C++/CLI
 	formatting.astyle,
 	diagnostics.cpplint,
@@ -28,6 +31,11 @@ local sources = {
 	-- general typos
 	code_actions.cspell,
 	-- diagnostics.cspell,
+
+	-- Lua
+	completion.luasnip,
+	diagnostics.luacheck,
+	formatting.stylua,
 }
 
 -- formattinh on save.
