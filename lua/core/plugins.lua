@@ -116,7 +116,7 @@ local plugins = {
 			})
 		end,
 	},
-
+	"kristijanhusak/vim-carbon-now-sh",
 	{
 		"zbirenbaum/copilot-cmp",
 		config = function()

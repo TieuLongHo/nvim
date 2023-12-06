@@ -32,6 +32,9 @@ local sources = {
 	code_actions.cspell,
 	-- diagnostics.cspell,
 
+	-- Latex
+	formatting.latexindent,
+	diagnostics.chktex,
 	-- Lua
 	completion.luasnip,
 	diagnostics.luacheck,

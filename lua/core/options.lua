@@ -4,6 +4,8 @@
 -- Set highlight on search
 vim.o.hlsearch = false
 
+vim.opt.spelllang = { "en_us", "de_ch" }
+vim.opt.spell = true
 -- Make line numbers default
 vim.wo.number = true
 
@@ -35,7 +37,6 @@ vim.o.termguicolors = true
 vim.o.background = "dark"
 vim.g.enfocado_style = "neon"
 vim.cmd([[colorscheme enfocado]])
-
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"

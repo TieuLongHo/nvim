@@ -20,8 +20,9 @@ local wk = require("which-key")
 -- vim.keymap.set("n", "<leader>hl", ":nohlsearch<CR>", {desc = "Clear highlights"})
 
 -- Nvim-Tree keymaps
-vim.keymap.set("n", "M", ":NvimTreeFocus<CR>", { silent = true }) -- focus on vimtree
+vim.keymap.set("n", "M", ":NvimTreeFocus<CR>", { silent = true })              -- focus on vimtree
 vim.keymap.set("n", "<c-m>", ":NvimTreeFindFileToggle<CR>", { silent = true }) -- open vimtree
+
 -- Tabs
 -- vim.keymap.set("n", "<c-h>", ":tabr<CR>") -- right tab
 -- vim.keymap.set("n", "<c-l>", ":tabl<CR>") -- left tab
@@ -30,8 +31,8 @@ vim.keymap.set("n", "<c-m>", ":NvimTreeFindFileToggle<CR>", { silent = true }) -
 -- vim.keymap.set("n", "<c-x>", ":tabc<CR>", { silent = true }) -- close tab
 -- vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true }) -- new tab
 
-vim.keymap.set("n", "<c-s>", ":w<CR>", { silent = true }) -- save
-vim.keymap.set("n", "Q", ":qall!<CR>", { silent = true }) -- quit all
+vim.keymap.set("n", "<c-s>", ":w<CR>", { silent = true })  -- save
+vim.keymap.set("n", "Q", ":qall!<CR>", { silent = true })  -- quit all
 vim.keymap.set("n", "<c-q>", ":q!<CR>", { silent = true }) -- quit
 
 -- Paste from Clipboard
@@ -43,7 +44,7 @@ vim.keymap.set("i", "<c-V>", "<c-r>+") -- paste from clipboard
 -- vim.keymap.set("t", "<c-j>", "exit<CR>")
 vim.keymap.set("n", "<c-\\>v", ":ToggleTerm size=70 direction=vertical<CR>", { silent = true }) -- vertical term
 --vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true }) -- lazygit
-vim.keymap.set("t", "<esc>", [[<C-\><C-n><C-w>k]], { noremap = true }) -- exit terminal mode
+vim.keymap.set("t", "<esc>", [[<C-\><C-n><C-w>k]], { noremap = true })                          -- exit terminal mode
 
 vim.keymap.set("n", "<leader>rn", function()
 	return ":IncRename " .. vim.fn.expand("<cword>")
@@ -166,8 +167,8 @@ wk.register({
 	g = {
 		function()
 			require("toggleterm.terminal").Terminal
-				:new({ cmd = "lazygit", hidden = true, direction = "float" })
-				:toggle()
+					:new({ cmd = "lazygit", hidden = true, direction = "float" })
+					:toggle()
 		end,
 		"Lazygit",
 	},
@@ -184,7 +185,7 @@ wk.register({
 
 	["<space>"] = { require("telescope.builtin").buffers, "Find existing buffers" }, -- find buffers
 	["/"] = {
-		function() -- find in current buffer
+		function()                                                                    -- find in current buffer
 			require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 				previewer = false,
@@ -196,46 +197,5 @@ wk.register({
 	h = {
 		name = "Clear Highlights",
 		l = { ":nohlsearch<CR>", "Clear highlights" }, -- clear highlights
-	},
-
-	-- Trouble
-	x = {
-		name = "Trouble",
-		x = {
-			function()
-				require("trouble").toggle()
-			end,
-			"Toggle Trouble",
-		},
-		w = {
-			function()
-				require("trouble").toggle("workspace_diagnostics")
-			end,
-			"Workspace Diagnostics",
-		},
-		d = {
-			function()
-				require("trouble").toggle("document_diagnostics")
-			end,
-			"Document Diagnostics",
-		},
-		q = {
-			function()
-				require("trouble").toggle("quickfix")
-			end,
-			"Quickfix",
-		},
-		l = {
-			function()
-				require("trouble").toggle("loclist")
-			end,
-			"Loclist",
-		},
-		R = {
-			function()
-				require("trouble").toggle("lsp_references")
-			end,
-			"References",
-		},
 	},
 }, { prefix = "<leader>" })
